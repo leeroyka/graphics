@@ -271,7 +271,7 @@ namespace graphics
                 isFirstDraw = true;
             }
             dt+=1;
-            if (dt >= 2670)
+            if (dt >= 1000)
                 DebugTimer.Enabled = false;
         }
     }

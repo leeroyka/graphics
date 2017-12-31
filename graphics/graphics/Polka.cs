@@ -41,8 +41,8 @@ namespace graphics
                 input = input.Remove(ind, 1);
                 input = input.Insert(ind, ",");
             }
-            string output = GetExpression(CheckExpression(input)); //to Postfix
-            double result = Counting(output); //Calculating
+            string output = GetExpression(CheckExpression(input)); 
+            double result = Counting(output); 
             string ret = result.ToString();
             if(ret.Length>6)
             {
@@ -50,7 +50,6 @@ namespace graphics
             }
             return ret; 
         }
-        //Holy Jesus Christ, it works!!
         private string GetExpression(string input)
         {
             string output = ""; 
@@ -255,7 +254,7 @@ namespace graphics
             
             string output = "(1";
             string z = "(" + input + ")";
-            for (int i = 1; i < 7; i++)
+            for (int i = 1; i < 9; i++)
             {
                 if (i % 2 != 0)
                     output += "-";
@@ -281,7 +280,7 @@ namespace graphics
             string output = "(";
             string z = "(" + input + ")";
             output += input;
-            for (int i = 1; i < 7; i++)
+            for (int i = 1; i < 9; i++)
             {
                 if (i % 2 != 0)
                     output += "-";
