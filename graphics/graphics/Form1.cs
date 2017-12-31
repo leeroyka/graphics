@@ -197,9 +197,8 @@ namespace graphics
             precisionLabel.Text = precisionBar.Value.ToString();
         }
         bool isFirstDraw = true;
-        int last_x=-50, last_y=-50;
-        Pen pen = new Pen(Color.FromArgb(255, 0, 122, 204),3);
-        
+        int last_x, last_y;
+        Pen pen = new Pen(Color.FromArgb(255, 0, 122, 204),3);        
         Pen wPen = new Pen(Color.FromArgb(255, 255, 255, 255));
         Pen bPen = new Pen(Color.FromArgb(30, 255, 255, 255));
         int center = 267;
@@ -234,7 +233,7 @@ namespace graphics
             Graphics fG;
             fG = this.CreateGraphics();
             pen.Alignment = PenAlignment.Center;
-            x  += plane.Location.X +center;
+            x += plane.Location.X +center;
             y += plane.Location.Y + center;
             if(isFirstDraw)
             {
