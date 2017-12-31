@@ -181,7 +181,7 @@ namespace graphics
             {
                 
                Debug.Text = "Debug " +plk.Calculate(textGraph.Text); // Debug
-                //BuildGraph();
+                //BuildGraph(); // In develop
                 DrawPlane(); // Draw background
                DebugTimer.Enabled = true; //Draw Graph
             }
@@ -223,7 +223,7 @@ namespace graphics
             last_x = x;
             last_y = y;
         }
-        int dt = -200;
+        int dt = -200; // -x
 
         private void plane_Paint(object sender, PaintEventArgs e)
         {

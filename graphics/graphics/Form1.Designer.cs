@@ -208,11 +208,11 @@
             // sizeLabel
             // 
             this.sizeLabel.AutoSize = true;
-            this.sizeLabel.Location = new System.Drawing.Point(95, 254);
+            this.sizeLabel.Location = new System.Drawing.Point(71, 254);
             this.sizeLabel.Name = "sizeLabel";
-            this.sizeLabel.Size = new System.Drawing.Size(15, 16);
+            this.sizeLabel.Size = new System.Drawing.Size(71, 16);
             this.sizeLabel.TabIndex = 14;
-            this.sizeLabel.Text = "0";
+            this.sizeLabel.Text = "In develop";
             this.sizeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Debug

@@ -206,7 +206,7 @@ namespace graphics
                 {
                     double a = temp.Pop();
                     double b = temp.Pop();
-                    //deug.Pop();
+                    //debug.Pop();
                     //debug.Pop();
                     switch (input[i]) 
                     {
