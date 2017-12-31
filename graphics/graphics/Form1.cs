@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -183,19 +184,24 @@ namespace graphics
                Debug.Text = "Debug " +plk.Calculate(textGraph.Text); // Debug
                 //BuildGraph(); // In develop
                 DrawPlane(); // Draw background
-               DebugTimer.Enabled = true; //Draw Graph
-            }
 
+                dt = -1000;
+                isFirstDraw = true;
+                DebugTimer.Enabled = true; //Draw Graph
+                buildButton.Enabled = false;
+            }
         }
 
         private void precisionBar_Scroll(object sender, EventArgs e)
         {
             precisionLabel.Text = precisionBar.Value.ToString();
         }
-        bool isFirstDraw = false;
+        bool isFirstDraw = true;
         int last_x=-50, last_y=-50;
-        Pen pen = new Pen(Color.FromArgb(255, 0, 122, 204));
+        Pen pen = new Pen(Color.FromArgb(255, 0, 122, 204),3);
+        
         Pen wPen = new Pen(Color.FromArgb(255, 255, 255, 255));
+        Pen bPen = new Pen(Color.FromArgb(30, 255, 255, 255));
         int center = 267;
         private void DrawPlane()
         {
@@ -205,25 +211,42 @@ namespace graphics
             
             fG.DrawLine(wPen,center + plane.Location.X, plane.Location.Y, center + plane.Location.X, center*2+ plane.Location.Y);
             fG.DrawLine(wPen, 0 + plane.Location.X, center+ plane.Location.Y, center * 2 + plane.Location.X, center+ plane.Location.Y);
+            for(int i= plane.Location.X+center;i< plane.Location.X+center*2;i+= precisionBar.Value)
+            {
+                fG.DrawLine(bPen, i, 0+plane.Location.Y, i, center * 2 + plane.Location.Y);
+            }
+            for (int i = plane.Location.X + center; i > plane.Location.X - center * 2; i -= precisionBar.Value)
+            {
+                fG.DrawLine(bPen, i, 0 + plane.Location.Y, i, center * 2 + plane.Location.Y);
+            }
+            for(int i = plane.Location.Y+center;i<plane.Location.Y+center*2;i+=precisionBar.Value)
+            {
+                fG.DrawLine(bPen, 0 + plane.Location.X, i, center * 2 + plane.Location.X, i);
+            }
+            for (int i = plane.Location.Y + center; i > plane.Location.Y - center * 2; i -= precisionBar.Value)
+            {
+                fG.DrawLine(bPen, 0 + plane.Location.X, i, center * 2 + plane.Location.X, i);
+            }
 
         }
         private void DrawLine(int x,int y)
         {
             Graphics fG;
             fG = this.CreateGraphics();
-            x = x + plane.Location.X +center;
+            pen.Alignment = PenAlignment.Center;
+            x  += plane.Location.X +center;
             y += plane.Location.Y + center;
-            if(!isFirstDraw)
+            if(isFirstDraw)
             {
                 last_x = x;
                 last_y = y;
-                isFirstDraw = true;
+                isFirstDraw = false;
             }
             fG.DrawLine(pen, last_x, last_y, x, y);
             last_x = x;
             last_y = y;
         }
-        int dt = -200; // -x
+        int dt = -1000; // -x
 
         private void plane_Paint(object sender, PaintEventArgs e)
         {
@@ -232,14 +255,23 @@ namespace graphics
 
         private void DebugTimer_Tick(object sender, EventArgs e)
         {
-            plk.x = dt.ToString();
-
+            double d =(double) dt / 10;
+            plk.x = d.ToString();
+            
             
             double y = Convert.ToDouble(plk.Calculate(textGraph.Text));
-            Debug.Text = "Debug " + plk.x + " + " + ((int)y*10).ToString();
-            DrawLine(dt* precisionBar.Value, -(int) (y* precisionBar.Value)); 
-            dt++;
-            if (dt == 267)
+            if (!plk.isAsymptote)
+            {
+                Debug.Text = "Debug " + d.ToString()+ " + " + ((int)y * 10).ToString();
+
+                DrawLine((int)(d * (double)precisionBar.Value), -(int)(y * precisionBar.Value));
+            }
+            else
+            {
+                isFirstDraw = true;
+            }
+            dt+=1;
+            if (dt >= 2670)
                 DebugTimer.Enabled = false;
         }
     }

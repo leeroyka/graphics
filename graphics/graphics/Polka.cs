@@ -10,15 +10,23 @@ namespace graphics
     {
 
         public string x = "0";
-        
+        public bool isAsymptote = false;
         public string Calculate(string input)
         {
+            isAsymptote = false;
             //crutch :D
-            if(x[0]=='-')
+            if (x[0]=='-')
             {
                 x = x.Remove(0, 1);
                 x = "(0-" + x+")";
                 
+            }
+            if (input[0] == '-')
+            {
+                input = input.Remove(0, 1);
+                input = "0-" + input;
+
+
             }
 
             while (input.IndexOf("x") != -1)
@@ -199,6 +207,10 @@ namespace graphics
                         i++;
                         if (i == input.Length) break;
                     }
+                    if(a.Length>16)
+                    {
+                        a = a.Substring(0, 16);
+                    }
                     temp.Push(double.Parse(a)); 
                     i--;
                 }
@@ -213,8 +225,19 @@ namespace graphics
                         case '+': result = b + a; break;
                         case '-': result = b - a; break;
                         case '*': result = b * a; break;
-                        case '/': result = b / a; break;
-                        case '^': result = double.Parse(Math.Pow(double.Parse(b.ToString()), double.Parse(a.ToString())).ToString()); break;
+                        case '/':
+                            double l = 0.00001;
+                            if (a<=0+l && a>=0-l)
+                            {
+                                isAsymptote = true;
+                                return 0;
+                            }
+                            result = b / a;
+                            break;
+                        case '^':
+
+                            result = double.Parse(Math.Pow(double.Parse(b.ToString()), double.Parse(a.ToString())).ToString());
+                            break;
                     }
                     temp.Push(result); 
                 }

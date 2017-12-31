@@ -165,6 +165,7 @@
             this.sizeBar.Name = "sizeBar";
             this.sizeBar.Size = new System.Drawing.Size(193, 45);
             this.sizeBar.TabIndex = 9;
+            this.sizeBar.Visible = false;
             // 
             // buildButton
             // 
@@ -182,9 +183,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 110);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 16);
+            this.label2.Size = new System.Drawing.Size(58, 16);
             this.label2.TabIndex = 11;
-            this.label2.Text = "Точность";
+            this.label2.Text = "Размер";
             // 
             // label3
             // 
@@ -194,6 +195,7 @@
             this.label3.Size = new System.Drawing.Size(98, 16);
             this.label3.TabIndex = 12;
             this.label3.Text = "Размер сетки";
+            this.label3.Visible = false;
             // 
             // precisionLabel
             // 
@@ -214,6 +216,7 @@
             this.sizeLabel.TabIndex = 14;
             this.sizeLabel.Text = "In develop";
             this.sizeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.sizeLabel.Visible = false;
             // 
             // Debug
             // 
@@ -237,7 +240,7 @@
             // 
             // DebugTimer
             // 
-            this.DebugTimer.Interval = 5;
+            this.DebugTimer.Interval = 1;
             this.DebugTimer.Tick += new System.EventHandler(this.DebugTimer_Tick);
             // 
             // Form1
