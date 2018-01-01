@@ -9,7 +9,8 @@ namespace graphics
     public class Polka
     {
 
-        public string x = "0";
+        public string x = "-97,3";
+        const double PI = Math.PI;
         public bool isAsymptote = false;
         public string Calculate(string input)
         {
@@ -28,7 +29,6 @@ namespace graphics
 
 
             }
-
             while (input.IndexOf("x") != -1)
             {
                 int ind = input.IndexOf("x");
@@ -41,7 +41,11 @@ namespace graphics
                 input = input.Remove(ind, 1);
                 input = input.Insert(ind, ",");
             }
-            string output = GetExpression(CheckExpression(input)); 
+            string deb = RemoveMathFunc(input);
+
+            string output = GetExpression(deb);
+          //  if (output[output.Length - 1] == ' ')
+        //        output = output.Remove(output.Length - 1, 1);
             double result = Counting(output); 
             string ret = result.ToString();
             if(ret.Length>6)
@@ -169,8 +173,107 @@ namespace graphics
             //}
             return input;
         }
-        private string GetMathFunc(string input)
+        private int GetInd(string input, int ind)
         {
+            int count = 1, eind = ind;
+            while (count != 0)
+            {
+                if (input[eind] == ')')
+                    count--;
+                if (input[eind] == '(')
+                    count++;
+                eind++;
+            }
+            eind = eind - ind - 1;
+            return eind;
+        }
+        private string RemoveCurr(string input, string nameFunc, int num)
+        {
+            int ind = input.IndexOf(nameFunc) + nameFunc.Length + 1;
+            int eind = GetInd(input, ind);
+            string arg = input.Substring(ind, eind);
+            arg = RemoveMathFunc(arg);
+            double res = Counting(GetExpression(arg));
+            switch (num)
+            {
+                case 1: res = Math.Sin(res); break;
+                case 2: res = Math.Cos(res); break;
+                case 3:
+                    double l = 0.01;
+                    if (res <= PI/2 + l && res >= PI/2 - l)
+                            isAsymptote = true;
+
+                    if (res <= (-PI/2) + l && res >= (-PI/2) - l)
+                        isAsymptote = true;
+                    res = Math.Tan(res);
+                    break;
+                case 4:
+                    if(res<=0)
+                    {
+                        isAsymptote = true;
+                        return "0";
+                    }
+                    res = Math.Log(res); break;
+                case 5:
+                    if(res<0)
+                    {
+                        isAsymptote = true;
+                        return "0";
+                    }
+                    res = Math.Sqrt(res);
+                    break;
+
+
+            }
+            string ar = res.ToString();
+            if (ar[0] == '-')
+            {
+                ar = ar.Remove(0, 1);
+                ar = "(0-" + ar + ")";
+
+            }
+            input = input.Remove(ind - nameFunc.Length - 1, eind + nameFunc.Length+2);
+            input = input.Insert(ind - nameFunc.Length - 1, ar);
+            return input;
+        }
+        private string RemoveMathFunc(string input)
+        {
+            if(input.IndexOf("sin") != -1)
+            {
+                //int ind = input.IndexOf("sin") + 4;
+                //int eind = GetInd(input, ind);
+                //string arg =  input.Substring(ind, eind);
+                //arg = RemoveMathFunc(arg);
+                //double res = Counting(GetExpression(arg));
+                //res = Math.Sin(res);
+                //string ar = res.ToString();
+                //if (ar[0] == '-')
+                //{
+                //    ar = ar.Remove(0, 1);
+                //    ar = "(0-" + ar + ")";
+
+                //}
+                //input = input.Remove(ind - 4, eind + 5);
+                //input = input.Insert(ind - 4, ar);
+                input = RemoveCurr(input, "sin", 1);
+            }
+            if (input.IndexOf("cos") != -1)
+            {
+                input = RemoveCurr(input, "cos", 2);
+            }
+            if (input.IndexOf("tg") != -1)
+            {
+                input = RemoveCurr(input, "tg", 3);
+            }
+            if (input.IndexOf("ln") != -1)
+            {
+                input = RemoveCurr(input, "ln", 4);
+
+            }
+            if (input.IndexOf("sqrt") != -1)
+            {
+                input = RemoveCurr(input, "sqrt", 5);
+            }
 
             return input;
         }
@@ -215,6 +318,9 @@ namespace graphics
                     {
                         a = a.Substring(0, 16);
                     }
+                    if(a.IndexOf("E") != -1)
+                      a = a.Remove(a.IndexOf("E"));
+                    
                     temp.Push(double.Parse(a)); 
                     i--;
                 }
@@ -254,58 +360,58 @@ namespace graphics
         }
         //Teylor.
         // tg,ctg,log... in develop
-        string cos(string input)
-        {
+        //string cos(string input)
+        //{
             
-            string output = "(1";
-            string z = "(" + input + ")";
-            for (int i = 1; i < 9; i++)
-            {
-                if (i % 2 != 0)
-                    output += "-";
-                else
-                    output += "+";
-                output += "(";
-                output += "(";
-                output += z;
-                output += "^";
-                output += (2 * i).ToString();
-                output += ")";
-                output += "/";
-                output += "(";
-                output += Factorial(i * 2).ToString();
-                output += ")";
-                output += ")";
-            }
-            output += ")";
-            return output;
-        }
-        string sin(string input)
-        {
-            string output = "(";
-            string z = "(" + input + ")";
-            output += input;
-            for (int i = 1; i < 9; i++)
-            {
-                if (i % 2 != 0)
-                    output += "-";
-                else
-                    output += "+";
-                output += "(";
-                output += "(";
-                output += z;
-                output += "^";
-                output += (2 * i + 1).ToString();
-                output += ")";
-                output += "/";
-                output += "(";
-                output += Factorial(i * 2 + 1).ToString();
-                output += ")";
-                output += ")";
-            }
-            output += ")";
-            return output;
-        }
+        //    string output = "(1";
+        //    string z = "(" + input + ")";
+        //    for (int i = 1; i < 9; i++)
+        //    {
+        //        if (i % 2 != 0)
+        //            output += "-";
+        //        else
+        //            output += "+";
+        //        output += "(";
+        //        output += "(";
+        //        output += z;
+        //        output += "^";
+        //        output += (2 * i).ToString();
+        //        output += ")";
+        //        output += "/";
+        //        output += "(";
+        //        output += Factorial(i * 2).ToString();
+        //        output += ")";
+        //        output += ")";
+        //    }
+        //    output += ")";
+        //    return output;
+        //}
+        //string sin(string input)
+        //{
+        //    string output = "(";
+        //    string z = "(" + input + ")";
+        //    output += input;
+        //    for (int i = 1; i < 9; i++)
+        //    {
+        //        if (i % 2 != 0)
+        //            output += "-";
+        //        else
+        //            output += "+";
+        //        output += "(";
+        //        output += "(";
+        //        output += z;
+        //        output += "^";
+        //        output += (2 * i + 1).ToString();
+        //        output += ")";
+        //        output += "/";
+        //        output += "(";
+        //        output += Factorial(i * 2 + 1).ToString();
+        //        output += ")";
+        //        output += ")";
+        //    }
+        //    output += ")";
+        //    return output;
+        //}
     }
 
 
