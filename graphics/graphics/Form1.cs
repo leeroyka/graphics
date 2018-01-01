@@ -185,7 +185,7 @@ namespace graphics
                 //BuildGraph(); // In develop
                 DrawPlane(); // Draw background
 
-                dt = -1000;
+                dt =  - (int) 2600/precisionBar.Value;
                 isFirstDraw = true;
                 DebugTimer.Enabled = true; //Draw Graph
                 textGraph.Enabled = false;
@@ -246,11 +246,12 @@ namespace graphics
                 last_y = y;
                 isFirstDraw = false;
             }
+            if(y<10000 && y>-10000)
             fG.DrawLine(pen, last_x, last_y, x, y);
             last_x = x;
             last_y = y;
         }
-        int dt = -1000; // -x
+        int dt; // -x
 
         private void plane_Paint(object sender, PaintEventArgs e)
         {
@@ -280,7 +281,7 @@ namespace graphics
                 isFirstDraw = true;
             }
             dt+=1;
-            if (dt >= 1000)
+            if (dt >= (int)2600 / precisionBar.Value)
             {
                 labelBuild.Visible = false;
                 DebugTimer.Enabled = false;
