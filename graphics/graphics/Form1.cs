@@ -32,13 +32,17 @@ namespace graphics
             closeButton.BackColor = cBlue;
             textGraph.BackColor = cBack;
             precisionBar.BackColor = cBackGR;
-            sizeBar.BackColor = cBackGR;
             buildButton.BackColor = cBackGR;
+            button1.BackColor = cBackGR;
+            BuildSec.BackColor = cBackGR;
             label2.BackColor = cBackGR;
-            label3.BackColor = cBackGR;
             label4.BackColor = cBackGR;
+            label5.BackColor = cBackGR;
+            label6.BackColor = cBackGR;
+            labelBuild.BackColor = cBackGR;
+            textBox1.BackColor = cBack;
+
             precisionLabel.BackColor = cBackGR;
-            sizeLabel.BackColor = cBackGR;
             //COLOR END
         
                         
@@ -175,10 +179,11 @@ namespace graphics
         {
             isDragging = false;
         }
-
+        string expression;
         private void buildButton_Click(object sender, EventArgs e)
         {
-            if (checkString(textGraph.Text))
+            expression = textGraph.Text;
+            if (checkString(expression))
             {
                 
                Debug.Text = "Debug " +plk.Calculate(textGraph.Text); // Debug
@@ -190,10 +195,10 @@ namespace graphics
                 DebugTimer.Enabled = true; //Draw Graph
                 textGraph.Enabled = false;
                 labelBuild.Visible = true;
-
+               
                 buildButton.Enabled = false;
                 precisionBar.Enabled = false;
-                BuildSec.Enabled = true;
+                
             }
         }
 
@@ -260,7 +265,30 @@ namespace graphics
 
         private void BuildSec_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Nope");
+            //   MessageBox.Show("Nope");
+            BuildSec.Visible = false;
+            label5.Visible = true;
+            label6.Visible = true;
+            textBox1.Visible = true;
+            button1.Visible = true;
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            expression = textBox1.Text;
+            if (checkString(expression))
+            {
+                button1.Enabled = false;
+                Debug.Text = "Debug " + plk.Calculate(textGraph.Text); // Debug
+                                                                       //BuildGraph(); // In develop
+                pen = new Pen(Color.FromArgb(255, 255, 76, 59), 3);
+                
+                dt = -(int)2600 / precisionBar.Value;
+                isFirstDraw = true;
+                DebugTimer.Enabled = true; //Draw Graph
+                textBox1.Enabled = false;
+            }
         }
 
         private void DebugTimer_Tick(object sender, EventArgs e)
@@ -269,7 +297,7 @@ namespace graphics
             plk.x = d.ToString();
             
             
-            double y = Convert.ToDouble(plk.Calculate(textGraph.Text));
+            double y = Convert.ToDouble(plk.Calculate(expression));
             if (!plk.isAsymptote)
             {
                 Debug.Text = "Debug " + d.ToString()+ " + " + ((int)y * 10).ToString();
@@ -283,6 +311,7 @@ namespace graphics
             dt+=1;
             if (dt >= (int)2600 / precisionBar.Value)
             {
+                BuildSec.Enabled = true;
                 labelBuild.Visible = false;
                 DebugTimer.Enabled = false;
             }

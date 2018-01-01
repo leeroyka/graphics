@@ -39,22 +39,22 @@
             this.closeButton = new System.Windows.Forms.Label();
             this.textGraph = new System.Windows.Forms.TextBox();
             this.precisionBar = new System.Windows.Forms.TrackBar();
-            this.sizeBar = new System.Windows.Forms.TrackBar();
             this.buildButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.precisionLabel = new System.Windows.Forms.Label();
-            this.sizeLabel = new System.Windows.Forms.Label();
             this.Debug = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.DebugTimer = new System.Windows.Forms.Timer(this.components);
             this.BuildSec = new System.Windows.Forms.Button();
             this.labelBuild = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.plane)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.precisionBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sizeBar)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -161,18 +161,10 @@
             this.precisionBar.Value = 13;
             this.precisionBar.Scroll += new System.EventHandler(this.precisionBar_Scroll);
             // 
-            // sizeBar
-            // 
-            this.sizeBar.Location = new System.Drawing.Point(12, 225);
-            this.sizeBar.Name = "sizeBar";
-            this.sizeBar.Size = new System.Drawing.Size(193, 45);
-            this.sizeBar.TabIndex = 9;
-            this.sizeBar.Visible = false;
-            // 
             // buildButton
             // 
             this.buildButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buildButton.Location = new System.Drawing.Point(12, 288);
+            this.buildButton.Location = new System.Drawing.Point(12, 177);
             this.buildButton.Name = "buildButton";
             this.buildButton.Size = new System.Drawing.Size(193, 35);
             this.buildButton.TabIndex = 10;
@@ -189,16 +181,6 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "Размер";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 206);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 16);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Размер сетки";
-            this.label3.Visible = false;
-            // 
             // precisionLabel
             // 
             this.precisionLabel.AutoSize = true;
@@ -208,17 +190,6 @@
             this.precisionLabel.TabIndex = 13;
             this.precisionLabel.Text = "13";
             this.precisionLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // sizeLabel
-            // 
-            this.sizeLabel.AutoSize = true;
-            this.sizeLabel.Location = new System.Drawing.Point(71, 254);
-            this.sizeLabel.Name = "sizeLabel";
-            this.sizeLabel.Size = new System.Drawing.Size(71, 16);
-            this.sizeLabel.TabIndex = 14;
-            this.sizeLabel.Text = "In develop";
-            this.sizeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.sizeLabel.Visible = false;
             // 
             // Debug
             // 
@@ -249,7 +220,7 @@
             // 
             this.BuildSec.Enabled = false;
             this.BuildSec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BuildSec.Location = new System.Drawing.Point(12, 329);
+            this.BuildSec.Location = new System.Drawing.Point(12, 218);
             this.BuildSec.Name = "BuildSec";
             this.BuildSec.Size = new System.Drawing.Size(193, 35);
             this.BuildSec.TabIndex = 17;
@@ -269,6 +240,53 @@
             this.labelBuild.Text = "Building";
             this.labelBuild.Visible = false;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label5.Location = new System.Drawing.Point(12, 246);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(25, 20);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "y=";
+            this.label5.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(40, 243);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(165, 22);
+            this.textBox1.TabIndex = 20;
+            this.textBox1.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Location = new System.Drawing.Point(12, 224);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(130, 16);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Введите функцию:";
+            this.label6.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(12, 271);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(193, 35);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Построить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -276,16 +294,17 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(772, 574);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.labelBuild);
             this.Controls.Add(this.BuildSec);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Debug);
-            this.Controls.Add(this.sizeLabel);
             this.Controls.Add(this.precisionLabel);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buildButton);
-            this.Controls.Add(this.sizeBar);
             this.Controls.Add(this.precisionBar);
             this.Controls.Add(this.textGraph);
             this.Controls.Add(this.closeButton);
@@ -306,7 +325,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.plane)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.precisionBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sizeBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,17 +341,18 @@
         private System.Windows.Forms.Label closeButton;
         private System.Windows.Forms.TextBox textGraph;
         private System.Windows.Forms.TrackBar precisionBar;
-        private System.Windows.Forms.TrackBar sizeBar;
         private System.Windows.Forms.Button buildButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label precisionLabel;
-        private System.Windows.Forms.Label sizeLabel;
         private System.Windows.Forms.Label Debug;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer DebugTimer;
         private System.Windows.Forms.Button BuildSec;
         private System.Windows.Forms.Label labelBuild;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
     }
 }
 
