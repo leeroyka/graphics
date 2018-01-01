@@ -238,7 +238,7 @@ namespace graphics
         }
         private string RemoveMathFunc(string input)
         {
-            if(input.IndexOf("sin") != -1)
+            while(input.IndexOf("sin") != -1)
             {
                 //int ind = input.IndexOf("sin") + 4;
                 //int eind = GetInd(input, ind);
@@ -257,20 +257,20 @@ namespace graphics
                 //input = input.Insert(ind - 4, ar);
                 input = RemoveCurr(input, "sin", 1);
             }
-            if (input.IndexOf("cos") != -1)
+            while (input.IndexOf("cos") != -1)
             {
                 input = RemoveCurr(input, "cos", 2);
             }
-            if (input.IndexOf("tg") != -1)
+            while (input.IndexOf("tg") != -1)
             {
                 input = RemoveCurr(input, "tg", 3);
             }
-            if (input.IndexOf("ln") != -1)
+            while (input.IndexOf("ln") != -1)
             {
                 input = RemoveCurr(input, "ln", 4);
 
             }
-            if (input.IndexOf("sqrt") != -1)
+            while (input.IndexOf("sqrt") != -1)
             {
                 input = RemoveCurr(input, "sqrt", 5);
             }
