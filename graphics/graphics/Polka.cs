@@ -115,64 +115,64 @@ namespace graphics
 
             return output; 
         }
-        private string CheckExpression(string input)
-        {
-            //string GetArgument(string input)
-            while (input.IndexOf("sin") != -1)
-            {
-                int ind = input.IndexOf("sin")+4;
-                int count = 1,eind=ind;
-                while(count!=0)
-                {
-                    if (input[eind] == ')')
-                        count--;
-                    if (input[eind] == '(')
-                        count++;
-                    eind++;
-                }
-                eind = eind - ind - 1;
-                string arg = sin(input.Substring(ind,eind));
-                input = input.Remove(ind - 4, eind + 5);
-                input = input.Insert(ind - 4, arg);
-            }
+        //private string CheckExpression(string input)
+        //{
+        //    //string GetArgument(string input)
+        //    while (input.IndexOf("sin") != -1)
+        //    {
+        //        int ind = input.IndexOf("sin")+4;
+        //        int count = 1,eind=ind;
+        //        while(count!=0)
+        //        {
+        //            if (input[eind] == ')')
+        //                count--;
+        //            if (input[eind] == '(')
+        //                count++;
+        //            eind++;
+        //        }
+        //        eind = eind - ind - 1;
+        //        string arg = sin(input.Substring(ind,eind));
+        //        input = input.Remove(ind - 4, eind + 5);
+        //        input = input.Insert(ind - 4, arg);
+        //    }
             
-            while(input.IndexOf("cos") != -1)
-            {
-                int ind = input.IndexOf("cos")+4;
-                int count = 1, eind = ind;
-                while (count != 0)
-                {
-                    if (input[eind] == ')')
-                        count--;
-                    if (input[eind] == '(')
-                        count++;
-                    eind++;
-                }
-                eind = eind - ind - 1;
-                string arg = cos(input.Substring(ind, eind));
-                input = input.Remove(ind - 4, eind + 5);
-                input = input.Insert(ind - 4, arg);
-            }
-            // ln     
-            //while (input.IndexOf("ln") != -1)
-            //{
-            //    int ind = input.IndexOf("ln") + 3;
-            //    int count = 1, eind = ind;
-            //    while (count != 0)
-            //    {
-            //        if (input[eind] == ')')
-            //            count--;
-            //        if (input[eind] == '(')
-            //            count++;
-            //        eind++;
-            //    }
-            //    eind = eind - ind - 1;
-            //    string arg = ln(input.Substring(ind, eind));
-            //    input = input.Remove(ind - 3, eind + 5);
-            //    input = input.Insert(ind - 3, arg);
-            //}
-            return input;
-        }
+        //    while(input.IndexOf("cos") != -1)
+        //    {
+        //        int ind = input.IndexOf("cos")+4;
+        //        int count = 1, eind = ind;
+        //        while (count != 0)
+        //        {
+        //            if (input[eind] == ')')
+        //                count--;
+        //            if (input[eind] == '(')
+        //                count++;
+        //            eind++;
+        //        }
+        //        eind = eind - ind - 1;
+        //        string arg = cos(input.Substring(ind, eind));
+        //        input = input.Remove(ind - 4, eind + 5);
+        //        input = input.Insert(ind - 4, arg);
+        //    }
+        //    // ln     
+        //    //while (input.IndexOf("ln") != -1)
+        //    //{
+        //    //    int ind = input.IndexOf("ln") + 3;
+        //    //    int count = 1, eind = ind;
+        //    //    while (count != 0)
+        //    //    {
+        //    //        if (input[eind] == ')')
+        //    //            count--;
+        //    //        if (input[eind] == '(')
+        //    //            count++;
+        //    //        eind++;
+        //    //    }
+        //    //    eind = eind - ind - 1;
+        //    //    string arg = ln(input.Substring(ind, eind));
+        //    //    input = input.Remove(ind - 3, eind + 5);
+        //    //    input = input.Insert(ind - 3, arg);
+        //    //}
+        //    return input;
+        //}
         private int GetInd(string input, int ind)
         {
             int count = 1, eind = ind;

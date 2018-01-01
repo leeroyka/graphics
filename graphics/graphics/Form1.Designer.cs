@@ -152,8 +152,8 @@
             // precisionBar
             // 
             this.precisionBar.Location = new System.Drawing.Point(12, 129);
-            this.precisionBar.Maximum = 100;
-            this.precisionBar.Minimum = 1;
+            this.precisionBar.Maximum = 70;
+            this.precisionBar.Minimum = 5;
             this.precisionBar.Name = "precisionBar";
             this.precisionBar.Size = new System.Drawing.Size(193, 45);
             this.precisionBar.SmallChange = 10;
