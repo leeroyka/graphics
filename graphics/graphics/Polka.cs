@@ -169,6 +169,11 @@ namespace graphics
             //}
             return input;
         }
+        private string GetMathFunc(string input)
+        {
+
+            return input;
+        }
         private bool IsOperator(char с)
         {
             if (("+-/*^()".IndexOf(с) != -1))

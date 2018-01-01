@@ -188,7 +188,12 @@ namespace graphics
                 dt = -1000;
                 isFirstDraw = true;
                 DebugTimer.Enabled = true; //Draw Graph
+                textGraph.Enabled = false;
+                labelBuild.Visible = true;
+
                 buildButton.Enabled = false;
+                precisionBar.Enabled = false;
+                BuildSec.Enabled = true;
             }
         }
 
@@ -252,6 +257,11 @@ namespace graphics
 
         }
 
+        private void BuildSec_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Nope");
+        }
+
         private void DebugTimer_Tick(object sender, EventArgs e)
         {
             double d =(double) dt / 10;
@@ -271,7 +281,10 @@ namespace graphics
             }
             dt+=1;
             if (dt >= 1000)
+            {
+                labelBuild.Visible = false;
                 DebugTimer.Enabled = false;
+            }
         }
     }
 }

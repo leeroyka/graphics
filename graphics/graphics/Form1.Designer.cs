@@ -48,6 +48,8 @@
             this.Debug = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.DebugTimer = new System.Windows.Forms.Timer(this.components);
+            this.BuildSec = new System.Windows.Forms.Button();
+            this.labelBuild = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.plane)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -243,6 +245,30 @@
             this.DebugTimer.Interval = 1;
             this.DebugTimer.Tick += new System.EventHandler(this.DebugTimer_Tick);
             // 
+            // BuildSec
+            // 
+            this.BuildSec.Enabled = false;
+            this.BuildSec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BuildSec.Location = new System.Drawing.Point(12, 329);
+            this.BuildSec.Name = "BuildSec";
+            this.BuildSec.Size = new System.Drawing.Size(193, 35);
+            this.BuildSec.TabIndex = 17;
+            this.BuildSec.Text = "Построить второй";
+            this.BuildSec.UseVisualStyleBackColor = true;
+            this.BuildSec.Click += new System.EventHandler(this.BuildSec_Click);
+            // 
+            // labelBuild
+            // 
+            this.labelBuild.AutoSize = true;
+            this.labelBuild.BackColor = System.Drawing.Color.Transparent;
+            this.labelBuild.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelBuild.Location = new System.Drawing.Point(50, 426);
+            this.labelBuild.Name = "labelBuild";
+            this.labelBuild.Size = new System.Drawing.Size(110, 31);
+            this.labelBuild.TabIndex = 18;
+            this.labelBuild.Text = "Building";
+            this.labelBuild.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -250,6 +276,8 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(772, 574);
+            this.Controls.Add(this.labelBuild);
+            this.Controls.Add(this.BuildSec);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Debug);
             this.Controls.Add(this.sizeLabel);
@@ -304,6 +332,8 @@
         private System.Windows.Forms.Label Debug;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer DebugTimer;
+        private System.Windows.Forms.Button BuildSec;
+        private System.Windows.Forms.Label labelBuild;
     }
 }
 
