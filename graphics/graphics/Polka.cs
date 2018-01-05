@@ -8,7 +8,7 @@ namespace graphics
 {
     public class Polka
     {
-
+        // И свет погас, и снова темнота; И здравого смысла здесь не будет никогда
         public string x = "-97,3";
         const double PI = Math.PI;
         public bool isAsymptote = false;
